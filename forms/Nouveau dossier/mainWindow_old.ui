@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>838</width>
+    <height>757</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>838</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionPrint_Setup"/>
+    <addaction name="actionPrint_Preview"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_TerRaPriv"/>
+   </widget>
+   <widget class="QMenu" name="menuQuery">
+    <property name="title">
+     <string>Query</string>
+    </property>
+    <addaction name="actionBy_Operator"/>
+    <addaction name="actionBy_Program"/>
+    <addaction name="actionBy_Task"/>
+   </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <addaction name="actionAll_Operators_with_Tasks"/>
+    <addaction name="actionAll_Operators_without_Tasks"/>
+    <addaction name="separator"/>
+    <addaction name="actionAll_Operators"/>
+    <addaction name="actionAll_Tasks"/>
+   </widget>
+   <widget class="QMenu" name="menuOperator">
+    <property name="title">
+     <string>Operator</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionUpdate"/>
+    <addaction name="actionDelete"/>
+   </widget>
+   <widget class="QMenu" name="menuTasks">
+    <property name="title">
+     <string>Tasks</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuQuery"/>
+   <addaction name="menuReport"/>
+   <addaction name="menuOperator"/>
+   <addaction name="menuTasks"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionQuit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout_TerRaPriv">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/images/info.png</normaloff>:/images/info.png</iconset>
+   </property>
+   <property name="text">
+    <string>About TerRaPriv</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print</string>
+   </property>
+  </action>
+  <action name="actionPrint_Preview">
+   <property name="text">
+    <string>Print Preview</string>
+   </property>
+  </action>
+  <action name="actionPrint_Setup">
+   <property name="text">
+    <string>Print Setup</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionBy_Operator">
+   <property name="text">
+    <string>By Operator</string>
+   </property>
+  </action>
+  <action name="actionBy_Program">
+   <property name="text">
+    <string>By Program</string>
+   </property>
+  </action>
+  <action name="actionBy_Task">
+   <property name="text">
+    <string>By Task</string>
+   </property>
+  </action>
+  <action name="actionAll_Operators_with_Tasks">
+   <property name="text">
+    <string>All Operators with Tasks</string>
+   </property>
+  </action>
+  <action name="actionAll_Operators_without_Tasks">
+   <property name="text">
+    <string>All Operators without Tasks</string>
+   </property>
+  </action>
+  <action name="actionAll_Operators">
+   <property name="text">
+    <string>All Operators</string>
+   </property>
+  </action>
+  <action name="actionAll_Tasks">
+   <property name="text">
+    <string>All Tasks</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionUpdate">
+   <property name="text">
+    <string>Update</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/images">
+    <file>open.png</file>
+	  <file>save.png</file>
+    <file>validate.png</file>
+    <file>close_file.png</file>
+    <file>validate_and_save.png</file>
+    <file>error.png</file>
+    <file>qmessagebox-crit.png</file>
+    <file>qmessagebox-warn.png</file>
+    <file>editNotice.png</file>
+    <file>ok.png</file>
+    <file>close.png</file>
+    <file>info.png</file>
+    <file>editdelete.png</file>
+  </qresource>
+</RCC>
