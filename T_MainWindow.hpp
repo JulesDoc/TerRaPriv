@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QWidget>
 
+#include "TerRaWidgetsLib.hpp"
 #include "T_DateUpdatedRecycleCondition.hpp"
 #include "T_TaskTreeWidget.hpp"
 #include "T_Database.hpp"

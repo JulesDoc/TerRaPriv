@@ -160,6 +160,10 @@ void T_EditTaskDlg::accept()
 
 void T_EditTaskDlg::reject()
 {
+	if (m_mapAllowedProgramList.value(m_previousArg) != m_ui->doubleListWidget->selectedItems()) {
+		m_changed = true;
+		m_mapAllowedProgramList.insert(m_previousArg, m_ui->doubleListWidget->selectedItems());
+	}
 	if (!m_changed) QDialog::reject();
 
 	else {

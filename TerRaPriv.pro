@@ -2,7 +2,7 @@
 include(../terrasys.pri)
 
 DEFINES += QT_NO_DEPRECATED_WARNINGS
-QT += widgets sql xml
+QT += widgets sql xml printsupport
 #testlib concurrent network
 
 SOURCES += \

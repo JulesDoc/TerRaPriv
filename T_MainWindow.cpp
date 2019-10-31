@@ -1,6 +1,7 @@
 #include <QMessageBox>
 #include <QPlainTextEdit>
 
+#include "TerRaWidgetsLib.hpp"
 #include "T_Configuration.hpp"
 #include "T_PrivDBTransaction.hpp"
 #include "T_QtProgramAboutDlg.hpp"
@@ -93,11 +94,9 @@ void T_MainWindow::close()
 void T_MainWindow::showAboutMessage()
 {
 	const QString version = QLatin1Literal("1.0");
-	//T_QtProgramAboutDlg dlg(version);
+	T_QtProgramAboutDlg dlg(version);
 	RCT_DatabaseConnectionInfo rcConnectionInfo = m_db.getConnectionInfo();
-	//dlg.showAboutMessage(rcConnectionInfo, this);
-	// Add here actions related to isAdvancedUser() change
-	// m_ui->actionTerRaAdhocNtcGenerator->setVisible(T_QtProgramAboutDlg::isAdvancedUser());
+	dlg.showAboutMessage(rcConnectionInfo, this);
 }
 
 
