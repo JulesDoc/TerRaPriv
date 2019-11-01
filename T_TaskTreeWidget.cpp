@@ -3,7 +3,6 @@
 #include <QCompleter>
 #include <QListWidget>
 #include <QPushButton>
-#include <T_DoubleListDlg.hpp>
 
 #include "T_TaskTreeWidget.hpp"
 #include "ui_taskTreeWidget.h"

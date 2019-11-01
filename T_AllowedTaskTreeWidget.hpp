@@ -4,7 +4,6 @@
 #include <QTreeWidgetItem>
 #include <QListWidgetItem>
 #include <QStringList>
-#include <set>
 
 #include "T_PrivTask.hpp"
 #include "T_EditTaskDlg.hpp"

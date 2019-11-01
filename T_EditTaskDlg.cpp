@@ -1,6 +1,4 @@
 #include <QMessageBox>
-#include <chrono>
-#include <thread>
 
 #include "T_EditTaskDlg.hpp"
 #include "ui_editTaskDlg.h"

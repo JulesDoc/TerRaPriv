@@ -4,7 +4,6 @@
 #include "T_PrivTask.hpp"
 #include "T_PrivTaskAlloc.hpp"
 #include "T_DoubleListDlg.hpp"
-#include "T_DoubleListWidget.hpp"
 #include "T_Database.hpp"
 
 class Ui_editTaskDlg;
