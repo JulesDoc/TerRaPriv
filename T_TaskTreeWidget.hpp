@@ -43,7 +43,7 @@ private slots:
 private:
 
 	Ui_taskTreeWidget *m_ui{ nullptr };
-	T_Database *m_db = 0;
+	T_Database *m_db{ nullptr };
 
 	QMultiMap<T_TerRaProgram, T_PrivTask> m_mapPrograms{};
 

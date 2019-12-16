@@ -55,7 +55,7 @@ void T_AllowedTaskTreeWidget::handleRefreshSignal()
 	Q_EMIT refreshMW();
 }
 
-void T_AllowedTaskTreeWidget::handleUserClicked(QListWidgetItem* item)
+void T_AllowedTaskTreeWidget::handleItemChanged(QListWidgetItem* current, QListWidgetItem* prev)
 {
 	m_ui->program_comboBox->setEnabled(true);
 	m_ui->task_filter_lineEdit->setEnabled(true);
@@ -65,8 +65,8 @@ void T_AllowedTaskTreeWidget::handleUserClicked(QListWidgetItem* item)
 	m_ui->expandCollapseButton->setEnabled(true);
 	m_ui->taskDescPlainTextEdit->clear();
 
-	m_aPrivTaskAlloc = item->data(TASK_ALLOC_ROLE).value<T_PrivTaskAlloc>();
-	m_currentUserItem = item;
+	m_aPrivTaskAlloc = current->data(TASK_ALLOC_ROLE).value<T_PrivTaskAlloc>();
+	m_currentUserItem = current;
 	loadAllowedTasks();
 	loadComboBox();
 	connect(m_ui->program_comboBox, SIGNAL(currentIndexChanged(QString)), SLOT(handleKeyProgramFilterChanged(QString)));

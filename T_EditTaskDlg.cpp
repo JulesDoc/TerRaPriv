@@ -100,7 +100,13 @@ void T_EditTaskDlg::accept()
 		m_mapAllowedProgramList.insert(m_previousArg, m_ui->doubleListWidget->selectedItems());
 	}
 
-	if (!m_changed) QDialog::accept();
+	if (!m_changed) {
+		const int msg = QMessageBox::warning(this, "No changes detected", "Do you want to continue?", QMessageBox::Yes | QMessageBox::No);
+		if (msg == QMessageBox::Yes)
+		{
+			QDialog::accept();
+		}
+	}
 
 	else {
 		const T_DateUpdatedRecycleCondition aRecycleCondition(m_aPrivTaskAlloc.getPrivUser().getUpdateBlock().getDateUpdated());

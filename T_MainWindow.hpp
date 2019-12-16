@@ -27,7 +27,7 @@ public slots:
 	void refreshMain();
 	
 private slots:
-	void handleUserClicked(QListWidgetItem* item);
+	void handleItemChanged(QListWidgetItem* current, QListWidgetItem* prev);
 	void showAboutMessage();
 	void close();
 
@@ -35,6 +35,8 @@ private:
 	Ui_MainWindow *m_ui;
 	T_Database& m_db;
 	int m_currentRow;
+	QListWidgetItem* m_prevItem;
+	QListWidgetItem* m_currentItem;
 	enum {
 		TASK_ALLOC_ROLE = Qt::UserRole,
 	};

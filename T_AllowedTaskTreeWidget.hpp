@@ -36,7 +36,7 @@ private:
 	bool isSuperUser();
 	
 public slots:
-	void handleUserClicked(QListWidgetItem* item);
+	void handleItemChanged(QListWidgetItem* current, QListWidgetItem* prev);
 	void clear();
 	
 private slots:

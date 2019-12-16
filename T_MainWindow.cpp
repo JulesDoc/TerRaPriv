@@ -30,8 +30,8 @@ void T_MainWindow::initializeGUI()
 
 	connect(m_ui->actionAbout_TerRaPriv, &QAction::triggered, this, &T_MainWindow::showAboutMessage);
 	connect(m_ui->actionQuit, &QAction::triggered, this, &T_MainWindow::close);
-	connect(m_ui->usersListWidget, &QListWidget::itemClicked, m_ui->allowedTaskTreeWidget, &T_AllowedTaskTreeWidget::handleUserClicked);
-	connect(m_ui->usersListWidget, &QListWidget::itemClicked, this, &T_MainWindow::handleUserClicked);
+	connect(m_ui->usersListWidget, &QListWidget::currentItemChanged, m_ui->allowedTaskTreeWidget, &T_AllowedTaskTreeWidget::handleItemChanged);
+	connect(m_ui->usersListWidget, &QListWidget::currentItemChanged, this, &T_MainWindow::handleItemChanged);
 	connect(m_ui->allowedTaskTreeWidget, SIGNAL(refreshMW()), SLOT(refreshMain()));
 	
 	statusBar()->showMessage(tr("System is Ready"));
@@ -39,13 +39,19 @@ void T_MainWindow::initializeGUI()
 
 void T_MainWindow::refreshMain()
 {
-	statusBar()->showMessage(tr("System is Busy"));
-	loadListOfUsers();
+	//Refreshing taskAlloc for the current user. Unique Db Transaction for the given user
+	QVariant var;
+	T_PrivDBTransaction dbTrans(m_db, true);
+	const T_PrivTaskAlloc aPrivTaskAlloc = dbTrans.deliverTaskAllocation(QVariant(m_currentItem->data(0)).toString());
+	var.setValue(aPrivTaskAlloc);
+	m_currentItem->setData(TASK_ALLOC_ROLE, var);
+	
+	//Reinitialize taskTreeWidget
 	m_ui->allowedTaskTreeWidget->initialize(m_db);
-	QListWidgetItem* item = m_ui->usersListWidget->item(m_currentRow);
-	m_ui->usersListWidget->setItemSelected(item, true);
-	Q_EMIT m_ui->usersListWidget->itemClicked(item);
-	statusBar()->showMessage(tr("System is Ready"));
+
+	//Realoding allowedTaskTreeWidget with new taskAlloc info by sending signal
+	m_ui->usersListWidget->setItemSelected(m_currentItem, true);
+	Q_EMIT m_ui->usersListWidget->currentItemChanged(m_currentItem, m_prevItem);
 }
 
 void T_MainWindow::loadListOfUsers()
@@ -67,23 +73,23 @@ void T_MainWindow::loadListOfUsers()
 	}
 }
 
-
 //Method to handle a click on the list of allowed users.
 //It shows user info and a complete list of task allowed for given user
-void T_MainWindow::handleUserClicked(QListWidgetItem* item)
+void T_MainWindow::handleItemChanged(QListWidgetItem* current, QListWidgetItem* prev)
 {
-	if (m_ui->usersListWidget->currentRow() >= 0) 
-		m_currentRow = m_ui->usersListWidget->currentRow();
+	if (prev != nullptr) m_prevItem = prev;
+	else m_prevItem = current;
+
+	m_currentItem = current;
 	m_ui->userInfoTextEdit->clear();
 	
-	const T_PrivTaskAlloc aPrivTaskAlloc = item->data(TASK_ALLOC_ROLE).value<T_PrivTaskAlloc>();
+	const T_PrivTaskAlloc aPrivTaskAlloc = current->data(TASK_ALLOC_ROLE).value<T_PrivTaskAlloc>();
 	const T_PrivUser &rcPrivUser = aPrivTaskAlloc.getPrivUser();
 
 	//Filling user info
 	m_ui->userInfoTextEdit->insertPlainText(QString("User first name: %1 \n").arg(rcPrivUser.getFirstName()));
 	m_ui->userInfoTextEdit->insertPlainText(QString("User last name: %1 \n").arg(rcPrivUser.getLastName()));
 }
-
 
 void T_MainWindow::close()
 {
